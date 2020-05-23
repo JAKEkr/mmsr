@@ -26,11 +26,11 @@ def main():
         opt['thres_sz'] = 48  # size threshold
         extract_signle(opt)
     elif mode == 'pair':
-        GT_folder = '../../datasets/DIV2K/DIV2K_train_HR'
-        LR_folder = '../../datasets/DIV2K/DIV2K_train_LR_bicubic/X4'
-        save_GT_folder = '../../datasets/DIV2K/DIV2K800_sub'
-        save_LR_folder = '../../datasets/DIV2K/DIV2K800_sub_bicLRx4'
-        scale_ratio = 4
+        GT_folder = '../../datasets/mod/HR/x4'
+        LR_folder = '../../datasets/mod/LR/x4'
+        save_GT_folder = '../../datasets/mod/GT_sub'
+        save_LR_folder = '../../datasets/mod/LR_sub'
+        scale_ratio =4 
         crop_sz = 480  # the size of each sub-image (GT)
         step = 240  # step of the sliding crop window (GT)
         thres_sz = 48  # size threshold
@@ -68,6 +68,9 @@ def main():
         opt['step'] = step // scale_ratio
         opt['thres_sz'] = thres_sz // scale_ratio
         extract_signle(opt)
+        print(save_GT_folder)
+        print('hhhhhhhhhhhhhhhhh',data_util._get_paths_from_images(save_GT_folder))
+        print('hhhhhhhhhhhhhhhhh',data_util._get_paths_from_images(save_LR_folder))
         assert len(data_util._get_paths_from_images(save_GT_folder)) == len(
             data_util._get_paths_from_images(
                 save_LR_folder)), 'different length of save_GT_folder and save_LR_folder.'
